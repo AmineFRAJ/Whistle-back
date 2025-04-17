@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "axios": "^1.8.4",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
+    "nodemon": "^3.1.9"
+  },
+  "name": "whistle-back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "front": "cd ../whistle-client && npm start",
+    "back": "nodemon index.js",
+    "dev": "concurrently \"npm run front\" \"npm run back\""
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
