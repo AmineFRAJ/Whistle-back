@@ -85,3 +85,23 @@ exports.filterLeagueMatches = async (req, res) => {
     res.status(500).json({ error: "Too many requests. Please wait." });
   }
 };
+// NEWS API
+exports.getNews = async (req, res) => {
+  try {
+    const response = await axios.get(
+      'https://newsapi.org/v2/everything?q=soccer&pageSize=5',
+      {
+        headers: {
+         'X-Api-Key': process.env.REACT_APP_API_TOKEN_NEWS,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    console.log('✅ News articles count:', response.data.articles?.length);
+
+    res.json({ articles: response.data.articles });
+  } catch (error) {
+    console.error('🛑 News API error:', error.response?.data || error.message);
+    res.status(500).json({ error: 'Failed to fetch news' });
+  }
+};
